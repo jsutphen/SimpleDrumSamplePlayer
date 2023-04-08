@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class SoundPlayer {
+    public String filename;
     private final URL URL;
     private static final int NUMBER_OF_CLIPS = 16;
     private AudioInputStream[] ais = new AudioInputStream[NUMBER_OF_CLIPS];
@@ -17,6 +18,7 @@ public class SoundPlayer {
     private int patternPosition = 0;
 
     public SoundPlayer(String filename) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        this.filename = filename;
         URL = SoundPlayer.class.getResource("resources/" + filename);
         for(int i = 0; i < NUMBER_OF_CLIPS; i++) {
             assert URL != null;

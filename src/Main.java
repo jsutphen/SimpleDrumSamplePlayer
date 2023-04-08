@@ -1,17 +1,22 @@
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
-    public static SoundPlayer bassDrum;
-    public static SoundPlayer hiHat;
-    public static SoundPlayer snare;
+    public static List<SoundPlayer> sounds = new LinkedList<>();
 
     static {
         try {
-            bassDrum = new SoundPlayer("Kick Alecia DS.wav");
-            hiHat = new SoundPlayer("ClosedHH Alessya DS.wav");
-            snare = new SoundPlayer("Snare Alessya DS.wav");
+            sounds.add(new SoundPlayer("Kick Alecia DS.wav"));
+            sounds.add(new SoundPlayer("ClosedHH Alessya DS.wav"));
+            sounds.add(new SoundPlayer("Snare Alessya DS.wav"));
+            sounds.add(new SoundPlayer("Perc Alessya DS 2.wav"));
+            sounds.add(new SoundPlayer("Perc Alessya DS 2.wav"));
+            sounds.add(new SoundPlayer("Timpani Alessya DS 1.wav"));
+            sounds.add(new SoundPlayer("Timpani Alessya DS 2.wav"));
+            sounds.add(new SoundPlayer("Timpani Alessya DS 3.wav"));
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             throw new RuntimeException(e);
