@@ -12,7 +12,7 @@ public class Main {
             sounds.add(new SoundPlayer("Kick Alecia DS.wav"));
             sounds.add(new SoundPlayer("ClosedHH Alessya DS.wav"));
             sounds.add(new SoundPlayer("Snare Alessya DS.wav"));
-            sounds.add(new SoundPlayer("Perc Alessya DS 2.wav"));
+            sounds.add(new SoundPlayer("Perc Alessya DS 1.wav"));
             sounds.add(new SoundPlayer("Perc Alessya DS 2.wav"));
             sounds.add(new SoundPlayer("Timpani Alessya DS 1.wav"));
             sounds.add(new SoundPlayer("Timpani Alessya DS 2.wav"));
