@@ -38,22 +38,11 @@ public class GUI {
 
         playPause.addActionListener((e) -> {
             if (playPause.isSelected()) {
-                for(int i = 0; i < Main.sounds.size(); i++) {
-                    int finalI = i;
-                    new Thread(() -> {
-                        try {
-                            Main.sounds.get(finalI).play();
-                        } catch (IOException | LineUnavailableException | InterruptedException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }).start();
-                }
+                Main.clock.startClock(0);
+                System.out.println("Called Main.clock.startClock(0)");
             } else {
                 // stop audio playback
-                for(int i = 0; i < Main.sounds.size(); i++) {
-                    int finalI = i;
-                    Main.sounds.get(finalI).pause();
-                }
+                Main.clock.stopClock();
             }
         });
 

@@ -1,9 +1,9 @@
 public class Clock {
-    public static int clock = 0;
+    public int clock = 0;
 
-    private static int numberOfSteps = 16;
+    private static final int NUMBER_OF_STEPS = 16;
 
-    private static boolean keepPlaying;
+    private static boolean keepPlaying = false;
 
     private static int bpm = 120;
 
@@ -11,15 +11,27 @@ public class Clock {
         bpm = newBpm;
     }
 
-    private static void startClock(int start) throws InterruptedException {
+
+    public void startClock(int start) {
         clock = start;
-        while(keepPlaying) {
-            Thread.sleep((60 * 1000) / bpm );
-            clock = (clock + 1) % numberOfSteps;
-        }
+        keepPlaying = true;
+        Thread t = new Thread( () -> {
+            while(true) {
+                if(keepPlaying) {
+                    try {
+                        Thread.sleep((60 * 1000) / bpm / 4);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    clock = (clock + 1) % NUMBER_OF_STEPS;
+                    System.out.println("clock updated: " + clock);
+                }
+            }
+        });
+        t.start();
     }
 
-    public static void stopClock() {
+    public void stopClock() {
         keepPlaying = false;
     }
 }

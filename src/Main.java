@@ -7,6 +7,8 @@ import java.util.List;
 public class Main {
     public static List<SoundPlayer> sounds = new LinkedList<>();
 
+    public static Clock clock = new Clock();
+
     static {
         try {
             sounds.add(new SoundPlayer("Kick Alecia DS.wav"));

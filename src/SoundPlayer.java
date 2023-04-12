@@ -27,20 +27,25 @@ public class SoundPlayer {
             FloatControl volume = (FloatControl) clips[i].getControl(FloatControl.Type.MASTER_GAIN);
             volume.setValue(-10f);
         }
+    }
+    public void enable() {
         // make soundPlayer listen to clock signals
-        int clipSelect = 0;
-        while (true) {
-            clips[clipSelect].stop();
-            clips[clipSelect].flush();
-            clips[clipSelect].setFramePosition(0);
-            if (pattern[Clock.clock]) {
-                clips[clipSelect].start();
+        final int[] clipSelect = {0};
+        Thread t = new Thread( () -> {
+            while (true) {
+                clips[clipSelect[0]].stop();
+                clips[clipSelect[0]].flush();
+                clips[clipSelect[0]].setFramePosition(0);
+                if (pattern[Main.clock.clock]) {
+                    clips[clipSelect[0]].start();
+                }
+                int holdClockValue = Main.clock.clock;
+                while (Main.clock.clock == holdClockValue) {
+                    // wait until clock is updated
+                }
+                clipSelect[0] = (clipSelect[0] + 1) % clips.length;
             }
-            int holdClockValue = Clock.clock;
-            while (Clock.clock == holdClockValue) {
-                // wait until clock is updated
-            }
-            clipSelect = (clipSelect + 1) % clips.length;
-        }
+        });
+        t.start();
     }
 }
