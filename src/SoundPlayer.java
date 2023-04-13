@@ -3,16 +3,13 @@ import java.io.IOException;
 import java.net.URL;
 
 public class SoundPlayer {
-    public String filename;
     private final URL URL;
     private final int NUMBER_OF_CLIPS = 16;
     private final AudioInputStream[] ais = new AudioInputStream[NUMBER_OF_CLIPS];
     private final DataLine.Info[] info = new DataLine.Info[NUMBER_OF_CLIPS];
     private final Clip[] clips = new Clip[NUMBER_OF_CLIPS];
-    public boolean[] pattern = {false, false, false, false,
-                                false, false, false, false,
-                                false, false, false, false,
-                                false, false, false, false};
+    public String filename;
+    public boolean[] pattern = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
 
     public SoundPlayer(String filename) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -29,7 +26,7 @@ public class SoundPlayer {
         }
         // make soundPlayer listen to clock signals
         int[] clipSelect = {0};
-        Thread soundPlayerThread = new Thread( () -> {
+        Thread soundPlayerThread = new Thread(() -> {
             System.out.println("SoundPlayer listening to clock signals");
             while (true) {
                 clips[clipSelect[0]].stop();
@@ -44,7 +41,7 @@ public class SoundPlayer {
                         try {
                             Main.clock.wait();
                         } catch (InterruptedException e) {
-                        e.printStackTrace();
+                            e.printStackTrace();
                         }
                         // wait until clock is updated
                     }
@@ -53,8 +50,5 @@ public class SoundPlayer {
             }
         });
         soundPlayerThread.start();
-    }
-    public void enable() {
-
     }
 }

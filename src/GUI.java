@@ -1,7 +1,5 @@
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -19,13 +17,13 @@ public class GUI {
     public GUI() {
 
         // make new checkBoxes for every sound
-        for(int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
+        for (int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
 
             instrumentStepsPanels.add(new JPanel());
 
             instrumentCheckBoxes.add(new JCheckBox[NUMBER_OF_STEPS]);
 
-            for(int stepsIndex = 0; stepsIndex < NUMBER_OF_STEPS; stepsIndex++) {
+            for (int stepsIndex = 0; stepsIndex < NUMBER_OF_STEPS; stepsIndex++) {
                 instrumentCheckBoxes.get(instrumentIndex)[stepsIndex] = new JCheckBox();
             }
 
@@ -35,7 +33,7 @@ public class GUI {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        frame.setSize(800,500);
+        frame.setSize(800, 500);
 
         playPause.addActionListener((e) -> {
             if (playPause.isSelected()) {
@@ -49,7 +47,7 @@ public class GUI {
 
         for (int stepIndex = 0; stepIndex < NUMBER_OF_STEPS; stepIndex++) {
             final int finalStepIndex = stepIndex;
-            for(int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
+            for (int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
                 int finalInstrumentIndex = instrumentIndex;
 
                 // for every step, for every instrument, add an action listener which maps the checkboxes to steps representation in the sounds
@@ -67,7 +65,7 @@ public class GUI {
 
         }
 
-        for(int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
+        for (int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
             GridBagConstraints instrumentLabelConstraints = new GridBagConstraints();
             instrumentLabelConstraints.gridx = 0;
             instrumentLabelConstraints.gridy = instrumentIndex;
@@ -79,7 +77,7 @@ public class GUI {
             this.instrumentStepsConstraints.add(instrumentStepsConstraints);
         }
 
-        for(int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
+        for (int instrumentIndex = 0; instrumentIndex < Main.sounds.size(); instrumentIndex++) {
             frame.add(instrumentLabels.get(instrumentIndex), instrumentLabelConstraints.get(instrumentIndex));
             frame.add(instrumentStepsPanels.get(instrumentIndex), instrumentStepsConstraints.get(instrumentIndex));
         }
