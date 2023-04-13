@@ -26,11 +26,6 @@ public class Clock {
                         throw new RuntimeException(e);
                     }
                     clock = (clock + 1) % NUMBER_OF_STEPS;
-
-
-                    //* to check whether the clock is updated correctly
-                    System.out.println("clock updated: " + clock); //*/
-
                     synchronized (this) {
                         notifyAll();
                     }

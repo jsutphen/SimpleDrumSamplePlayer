@@ -27,7 +27,6 @@ public class SoundPlayer {
         // make soundPlayer listen to clock signals
         int[] clipSelect = {0};
         Thread soundPlayerThread = new Thread(() -> {
-            System.out.println("SoundPlayer listening to clock signals");
             while (true) {
                 clips[clipSelect[0]].stop();
                 clips[clipSelect[0]].flush();
