@@ -12,6 +12,10 @@ public class Clock {
     public void startClock(int start) {
 
         clock = start;
+        synchronized (this) {
+            notifyAll();
+        }
+
         keepPlaying = true;
         Thread clockThread = new Thread(() -> {
             while (true) {
