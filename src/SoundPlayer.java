@@ -6,9 +6,9 @@ public class SoundPlayer {
     public String filename;
     private final URL URL;
     private final int NUMBER_OF_CLIPS = 16;
-    private AudioInputStream[] ais = new AudioInputStream[NUMBER_OF_CLIPS];
-    private DataLine.Info[] info = new DataLine.Info[NUMBER_OF_CLIPS];
-    private Clip[] clips = new Clip[NUMBER_OF_CLIPS];
+    private final AudioInputStream[] ais = new AudioInputStream[NUMBER_OF_CLIPS];
+    private final DataLine.Info[] info = new DataLine.Info[NUMBER_OF_CLIPS];
+    private final Clip[] clips = new Clip[NUMBER_OF_CLIPS];
     public boolean[] pattern = {false, false, false, false,
                                 false, false, false, false,
                                 false, false, false, false,

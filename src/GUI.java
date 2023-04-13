@@ -7,13 +7,13 @@ import java.util.LinkedList;
 
 public class GUI {
     final int NUMBER_OF_STEPS = 16;
-    private java.util.List<JCheckBox[]> instrumentCheckBoxes = new LinkedList<>();
-    private java.util.List<JPanel> instrumentStepsPanels = new LinkedList<>();
-    private java.util.List<GridBagConstraints> instrumentStepsConstraints = new LinkedList<>();
-    private JCheckBox playPause = new JCheckBox("Play / Pause");
-    private JFrame frame = new JFrame();
-    private java.util.List<JLabel> instrumentLabels = new LinkedList<>();
-    private java.util.List<GridBagConstraints> instrumentLabelConstraints = new LinkedList<>();
+    private final java.util.List<JCheckBox[]> instrumentCheckBoxes = new LinkedList<>();
+    private final java.util.List<JPanel> instrumentStepsPanels = new LinkedList<>();
+    private final java.util.List<GridBagConstraints> instrumentStepsConstraints = new LinkedList<>();
+    private final JCheckBox playPause = new JCheckBox("Play / Pause");
+    private final JFrame frame = new JFrame();
+    private final java.util.List<JLabel> instrumentLabels = new LinkedList<>();
+    private final java.util.List<GridBagConstraints> instrumentLabelConstraints = new LinkedList<>();
 
 
     public GUI() {
