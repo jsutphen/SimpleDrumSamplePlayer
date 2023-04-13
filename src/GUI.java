@@ -2,6 +2,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class GUI {
@@ -54,6 +55,10 @@ public class GUI {
                 // for every step, for every instrument, add an action listener which maps the checkboxes to steps representation in the sounds
                 instrumentCheckBoxes.get(finalInstrumentIndex)[finalStepIndex].addActionListener((e) -> {
                     Main.sounds.get(finalInstrumentIndex).pattern[finalStepIndex] = instrumentCheckBoxes.get(finalInstrumentIndex)[finalStepIndex].isSelected();
+
+                    //* to check if actionListener changes the correct pattern:
+                    System.out.println("pattern of instrument " + "'" + Main.sounds.get(finalInstrumentIndex).filename + "'" + " changed to: " +
+                            Arrays.toString(Main.sounds.get(finalInstrumentIndex).pattern)); //*/
                 });
 
                 // on every step, add the respective checkboxes for every instrument

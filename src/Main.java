@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
     public static List<SoundPlayer> sounds = new LinkedList<>();
 
-    public static Clock clock = new Clock();
+    public volatile static Clock clock = new Clock();
 
     static {
         try {

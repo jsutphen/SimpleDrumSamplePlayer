@@ -13,9 +13,10 @@ public class Clock {
 
 
     public void startClock(int start) {
+
         clock = start;
         keepPlaying = true;
-        Thread t = new Thread( () -> {
+        Thread clockThread = new Thread( () -> {
             while(true) {
                 if(keepPlaying) {
                     try {
@@ -24,11 +25,18 @@ public class Clock {
                         throw new RuntimeException(e);
                     }
                     clock = (clock + 1) % NUMBER_OF_STEPS;
-                    System.out.println("clock updated: " + clock);
+
+
+                    //* to check whether the clock is updated correctly
+                    System.out.println("clock updated: " + clock); //*/
+
+                    synchronized (this) {
+                        notifyAll();
+                    }
                 }
             }
         });
-        t.start();
+        clockThread.start();
     }
 
     public void stopClock() {
