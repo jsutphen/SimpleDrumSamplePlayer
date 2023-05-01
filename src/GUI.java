@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 public class GUI {
     final int NUMBER_OF_STEPS = 16;
